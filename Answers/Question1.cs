@@ -8,9 +8,10 @@ namespace C_Sharp_Challenge_Skeleton.Answers
 {
     public class Question1
     {
-        /*
+        
         public static int Answer(int[] portfolios)
         {
+            /*
             int result = 0;
             int n = portfolios.Length;
             for (int i = 0; i < n; i++)
@@ -25,7 +26,8 @@ namespace C_Sharp_Challenge_Skeleton.Answers
                 }
             }
             return result;
-        }*/
-        return -1;
+            */
+            return -1;
+        }
     }
 }
