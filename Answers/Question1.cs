@@ -8,6 +8,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
 {
     public class Question1
     {
+        /*
         public static int Answer(int[] portfolios)
         {
             int result = 0;
@@ -24,6 +25,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
                 }
             }
             return result;
-        }
+        }*/
+        return -1;
     }
 }
