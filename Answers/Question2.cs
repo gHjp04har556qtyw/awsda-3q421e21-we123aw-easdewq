@@ -6,6 +6,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
     {
         public static int Answer(int[] cashflowIn, int[] cashflowOut)
         {
+            /*
             // Merge arrays into one
             int[] merged = new int[cashflowIn.Length + cashflowOut.Length];
 
@@ -22,7 +23,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             }
 
             // Sort the array
-            Array.Sort(merged);
+            //Array.Sort(merged);
 
 
             // output merged values
@@ -30,6 +31,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             {
                 Console.WriteLine(merged[i]);
             }
+            */
 
             // Dynamically add smallest positive number that also has a small negative number
             // If there is no small negative, don't use it, try other solutions until 0 is found

@@ -5,7 +5,7 @@
         public static int Answer(string[,] machineToBeFixed, int numOfConsecutiveMachines)
         {
             //TODO: Please work out the solution;
-            return -1;
+            return 0;
         }
     }
 }
