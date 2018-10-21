@@ -11,7 +11,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
         
         public static int Answer(int[] portfolios)
         {
-            /*
+            
             int result = 0;
             int n = portfolios.Length;
             for (int i = 0; i < n; i++)
@@ -26,8 +26,10 @@ namespace C_Sharp_Challenge_Skeleton.Answers
                 }
             }
             return result;
-            */
+            
 
+
+            /*
             int result = 0;
             int n = portfolios.Length;
 
@@ -57,7 +59,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
                 }
             }
             return result;
-
+            */
             //return -1;
         }
     }
