@@ -18,7 +18,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             {
                 for (long j = i + 1; j < n; j++)
                 {
-                    if (portfolios[i] == portfolios[j]) continue;
+                    //if (portfolios[i] == portfolios[j]) continue;
 
                     int xor = portfolios[i] ^ portfolios[j];
 
