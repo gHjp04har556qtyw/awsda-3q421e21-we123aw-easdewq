@@ -14,11 +14,11 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             
             int result = 0;
             int n = portfolios.Length;
-            for (long i = 0; i < n; i++)
+            for (long i = 0; i < n-1; i++)
             {
                 for (long j = i + 1; j < n; j++)
                 {
-                    //if (portfolios[i] == portfolios[j]) continue;
+                    if (portfolios[i] == portfolios[j]) continue;
 
                     int xor = portfolios[i] ^ portfolios[j];
 
