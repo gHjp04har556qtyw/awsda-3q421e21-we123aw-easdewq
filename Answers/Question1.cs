@@ -13,16 +13,11 @@ namespace C_Sharp_Challenge_Skeleton.Answers
         {
             
             int result = 0;
-            int n = portfolios.Length;
-            for (int i = 0; i < n-1; i++)
+            for (int i = 0, n = portfolios.Length; i < n-1; i++)
             {
                 for (int j = i + 1; j < n; j++)
                 {
-
                     int xor = portfolios[i] ^ portfolios[j];
-
-                    if (xor == 65535) return xor;
-
                     result = xor > result ? xor : result;
                 }
             }
