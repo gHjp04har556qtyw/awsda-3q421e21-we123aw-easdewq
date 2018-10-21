@@ -12,7 +12,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
         public static int Answer(int[] portfolios)
         {
             int result = 0;
-            for (int n = portfolios.Length; n >= 1; n--)
+            for (int n = portfolios.Length; n >= 0; n--)
             {
                 for (int j = n + 1; j < portfolios.Length; j++)
                 {
