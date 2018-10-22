@@ -12,10 +12,11 @@ namespace C_Sharp_Challenge_Skeleton.Answers
         public static int Answer(int[] portfolios)
         {
             int result = 0;
-            for (int n = portfolios.Length - 1, a = portfolios[n]; n >= 0; n--)
+            for (int i=0, n = portfolios.Length, a = portfolios[i]; i < n - 1; i++)
             {
-                for (int j = 1, x = a ^ portfolios[j]; j < n; j++)
+                for (int j = i + 1; j < n; j++)
                 {
+                    int x = a ^ portfolios[j];
                     result = (x) > result ? (x) : result;
                     if (result == 65335) return 65335;
                 }
