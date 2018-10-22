@@ -14,9 +14,10 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             int result = 0;
             for (int n = portfolios.Length - 1; n >= 0; n--)
             {
+                int a = portfolios[n];
                 for (int j = 1; j < n; j++)
                 {
-                    int x = portfolios[n] ^ portfolios[j];
+                    int x = a ^ portfolios[j];
                     result = (x) > result ? (x) : result;
                     if (result == 65335) return 65335;
                 }
