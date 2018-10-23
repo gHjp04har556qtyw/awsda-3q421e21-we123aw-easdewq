@@ -1,4 +1,6 @@
-﻿namespace C_Sharp_Challenge_Skeleton.Answers
+﻿using System;
+
+namespace C_Sharp_Challenge_Skeleton.Answers
 {
     public class Question5
     {
@@ -15,7 +17,7 @@
                 }
             }
 
-            int difference = highest - totalValueOfShares;
+            int difference = Math.Abs(highest - totalValueOfShares);
 
             // now find the common factor between the both
 
