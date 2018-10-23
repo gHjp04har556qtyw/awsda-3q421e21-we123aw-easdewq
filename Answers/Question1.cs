@@ -14,16 +14,16 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             int r = 0;
             int n = portfolios.Length;
 
-            for (int a = 0; a < n; a++)
+            for (int i = 0; i < n; i++)
             {
-                int j = portfolios[a];
-                for (int b = a + 1; b < n; b++)
+                int subA = portfolios[i];
+                for (int j = i + 1; j < n; j++)
                 {
-                    int x = (j ^ portfolios[b]);
-                    if (x > r)
+                    int XOR = (subA ^ portfolios[j]);
+                    if (XOR > r)
                     {
-                        r = x;
-                        if (x == 65335) return 65335;
+                        r = XOR;
+                        if (XOR == 65335) return 65335;
                     }
                 }
             }
