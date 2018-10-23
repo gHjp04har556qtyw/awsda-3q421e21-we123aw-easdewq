@@ -6,19 +6,27 @@ namespace C_Sharp_Challenge_Skeleton.Answers
     {
         public static int Answer(int[] numOfShares, int totalValueOfShares)
         {
-            // sort the array
-            Array.Sort(numOfShares);
+            int n = numOfShares.Length;
 
-            // split the number in 2
-            int estimate = totalValueOfShares;
-            int found = 0;
+            bool changed = false;
+            int currAlloc = 0, minAlloc = n + 1;
 
-            for(int i=0; i<numOfShares.Length; i++)
+            int start = 0, end = 0;
+            while (end < n)
             {
-                if (numOfShares[i] == estimate) found++;
+                while (currAlloc <= totalValueOfShares && end < n)
+                    currAlloc += numOfShares[end++];
+                while (currAlloc > totalValueOfShares && start < n)
+                {
+                    if (end - start < minAlloc)
+                    {
+                        minAlloc = end - start;
+                        changed = true;
+                    }
+                    currAlloc -= numOfShares[start++];
+                }
             }
-
-            return found;
+            return changed ? minAlloc : 0;
         }
     }
 }
