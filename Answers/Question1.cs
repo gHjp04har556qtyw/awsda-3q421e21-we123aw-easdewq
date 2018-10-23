@@ -15,7 +15,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             for (; i < n; i++)
             {
                 a = portfolios[i];
-                for (j = i + 1, x = 0; j < n; j++)
+                for (j = i, x = 0; j < n; j++)
                 {
                     x = a ^ portfolios[j];
                     result = x > result ? x : result;
