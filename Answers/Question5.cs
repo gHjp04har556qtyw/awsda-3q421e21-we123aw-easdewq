@@ -6,22 +6,19 @@ namespace C_Sharp_Challenge_Skeleton.Answers
     {
         public static int Answer(int[] numOfShares, int totalValueOfShares)
         {
+            // sort the array
+            Array.Sort(numOfShares);
 
-            int highest = 0;
-            // Find the lowest number 
-            for(int i=0; i< numOfShares.Length; i++)
+            // split the number in 2
+            int estimate = totalValueOfShares;
+            int found = 0;
+
+            for(int i=0; i<numOfShares.Length; i++)
             {
-                if(numOfShares[i] > highest)
-                {
-                    highest = numOfShares[i];
-                }
+                if (numOfShares[i] == estimate) found++;
             }
 
-            int difference = Math.Abs(highest - totalValueOfShares);
-
-            // now find the common factor between the both
-
-            return difference;
+            return found;
         }
     }
 }
