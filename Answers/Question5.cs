@@ -16,7 +16,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             {
                 while (currAlloc <= totalValueOfShares && end < n)
                     currAlloc += numOfShares[end++];
-                while (currAlloc > totalValueOfShares && start < n)
+                while (currAlloc >= totalValueOfShares && start < n)
                 {
                     if (end - start < minAlloc)
                     {
