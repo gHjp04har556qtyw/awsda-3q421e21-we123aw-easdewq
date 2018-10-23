@@ -11,24 +11,24 @@ namespace C_Sharp_Challenge_Skeleton.Answers
         
         public static int Answer(int[] portfolios)
         {
-            ushort r = ushort.MinValue;
+            int r = 0;
             int n = portfolios.Length;
 
-            for (int i = 0; i < n; i++)
+            for (int a = 0; a < n; a++)
             {
-                ushort j = (ushort)portfolios[i];
-                for (int ii = i + 1; ii < n; ii++)
+                int j = portfolios[a];
+                for (int b = a + 1; b < n; b++)
                 {
-                    ushort x = (ushort)(j ^ portfolios[ii]);
+                    int x = (j ^ portfolios[b]);
                     if (x > r)
                     {
-                        if (x == 65335) return 65335;
                         r = x;
+                        if (x == 65335) return 65335;
                     }
                 }
             }
 
-            return (int)r;
+            return r;
         }
     }
 }
