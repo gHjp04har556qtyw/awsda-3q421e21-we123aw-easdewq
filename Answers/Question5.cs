@@ -4,8 +4,22 @@
     {
         public static int Answer(int[] numOfShares, int totalValueOfShares)
         {
-            //TODO: Please work out the solution;
-            return 0;
+
+            int highest = 0;
+            // Find the lowest number 
+            for(int i=0; i< numOfShares.Length; i++)
+            {
+                if(numOfShares[i] > highest)
+                {
+                    highest = numOfShares[i];
+                }
+            }
+
+            int difference = highest - totalValueOfShares;
+
+            // now find the common factor between the both
+
+            return difference;
         }
     }
 }
