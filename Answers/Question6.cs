@@ -6,6 +6,12 @@ namespace C_Sharp_Challenge_Skeleton.Answers
     {
         public static int Answer(int numOfServers, int targetServer, int[,] connectionTimeMatrix)
         {
+            // if the target server is only 1 in direction or itself
+            if(connectionTimeMatrix[0, targetServer] == 1) return 1;
+            if (connectionTimeMatrix[0, targetServer] == 0) return 0;
+
+            // otherwise check the other nodes
+
             return DijkstraAlgo(numOfServers, targetServer, connectionTimeMatrix);
         }
 
