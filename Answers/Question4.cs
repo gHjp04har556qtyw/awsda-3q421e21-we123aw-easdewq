@@ -9,8 +9,6 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             // Brute force Loop through
             for(int i =0; i< machineToBeFixed.GetLength(0); i++)
             {
-                bool startCounting = false;
-
                 for(int j = 0; j < machineToBeFixed.GetLength(1); j++)
                 {
                     // skip if X is found
@@ -20,8 +18,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
                     }
                     else
                     {
-                        // startCounting
-                        startCounting = true;
+
                     }
                 }
             }
