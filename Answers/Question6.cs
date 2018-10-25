@@ -10,27 +10,27 @@ namespace C_Sharp_Challenge_Skeleton.Answers
         }
 
 
-        public static int DijkstraAlgo(int verticesCount, int target, int[,] graph)
+        public static int DijkstraAlgo(int numOfServers, int targetServer, int[,] graph)
         {
-            int[] distance = new int[verticesCount];
-            bool[] shortestPaths = new bool[verticesCount];
-            for (int i = 0; i < verticesCount; ++i)
+            int[] distance = new int[numOfServers];
+            bool[] shortestPaths = new bool[numOfServers];
+            for (int i = 0; i < numOfServers; ++i)
             {
                 distance[i] = int.MaxValue;
                 shortestPaths[i] = false;
             }
 
             distance[0] = 0;
-            for (int count = 0; count < verticesCount - 1; ++count)
+            for (int count = 0; count < numOfServers - 1; ++count)
             {
-                int u = MinD(distance, shortestPaths, verticesCount);
+                int u = MinD(distance, shortestPaths, numOfServers);
                 shortestPaths[u] = true;
-                for (int v = 0; v < verticesCount; ++v)
+                for (int v = 0; v < numOfServers; ++v)
                     if (!shortestPaths[v] && Convert.ToBoolean(graph[u, v]) && distance[u] != int.MaxValue && distance[u] + graph[u, v] < distance[v])
                         distance[v] = distance[u] + graph[u, v];
             }
 
-            return distance[target];
+            return distance[targetServer];
         }
 
         private static int MinD(int[] distance, bool[] shortestPaths, int n)
