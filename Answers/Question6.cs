@@ -6,20 +6,47 @@ namespace C_Sharp_Challenge_Skeleton.Answers
     {
         public static int Answer(int numOfServers, int targetServer, int[,] connectionTimeMatrix)
         {
-
-            /*
-            int smallest = Int32.MaxValue;
-
-            // loop through until smallest edge found
-            for(int i=0; i<numOfServers; i++)
-            {
-
-            }*/
-
-            // Eventually it will be the value in the first index to target server [0, 7, targetServer]
-            return connectionTimeMatrix[0, targetServer];
+            return DijkstraAlgo(numOfServers, targetServer, connectionTimeMatrix);
         }
 
-        
+
+        public static int DijkstraAlgo(int verticesCount, int target, int[,] graph)
+        {
+            int[] distance = new int[verticesCount];
+            bool[] shortestPaths = new bool[verticesCount];
+            for (int i = 0; i < verticesCount; ++i)
+            {
+                distance[i] = int.MaxValue;
+                shortestPaths[i] = false;
+            }
+
+            distance[0] = 0;
+            for (int count = 0; count < verticesCount - 1; ++count)
+            {
+                int u = MinD(distance, shortestPaths, verticesCount);
+                shortestPaths[u] = true;
+                for (int v = 0; v < verticesCount; ++v)
+                    if (!shortestPaths[v] && Convert.ToBoolean(graph[u, v]) && distance[u] != int.MaxValue && distance[u] + graph[u, v] < distance[v])
+                        distance[v] = distance[u] + graph[u, v];
+            }
+
+            return distance[target];
+        }
+
+        private static int MinD(int[] distance, bool[] shortestPaths, int n)
+        {
+            int min = int.MaxValue;
+            int minIndex = 0;
+            for (int v = 0; v < n; ++v)
+            {
+                if (shortestPaths[v] == false && distance[v] <= min)
+                {
+                    min = distance[v];
+                    minIndex = v;
+                }
+            }
+
+            return minIndex;
+        }
     }
 }
