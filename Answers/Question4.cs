@@ -6,26 +6,24 @@ namespace C_Sharp_Challenge_Skeleton.Answers
     {
         public static int Answer(string[,] machineToBeFixed, int numOfConsecutiveMachines)
         {
-            // Brute force Loop through
-            for(int i =0; i< machineToBeFixed.GetLength(0); i++)
-            {
-                for(int j = 0; j < machineToBeFixed.GetLength(1); j++)
-                {
-                    // skip if X is found
-                    if (machineToBeFixed[i, j].Equals("X") && (machineToBeFixed.GetLength(1) - j) > numOfConsecutiveMachines)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-
-                    }
-                }
-            }
 
 
             //TODO: Please work out the solution;
             return 0;
+        }
+
+        public static bool canFix(string[] system, int numOfConsecutiveMachines)
+        {
+            int n = system.Length;
+            int difference = Math.Abs(n - numOfConsecutiveMachines);
+
+            // if any of these values are X then it is impossible to fit in here!
+            for (int i=difference; i < n - difference; i++)
+            {
+                if (system[i].Equals("X")) return false;
+            }
+
+            return true;
         }
     }
 }
