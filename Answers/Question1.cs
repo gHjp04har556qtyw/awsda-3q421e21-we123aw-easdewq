@@ -23,7 +23,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
                     if (XOR > r)
                     {
                         r = XOR;
-                        if (XOR == 65335) return 65335;
+                        //if (XOR == 65335) return 65335;
                     }
                 }
             }
