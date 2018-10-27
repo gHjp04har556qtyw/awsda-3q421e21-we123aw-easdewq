@@ -6,7 +6,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
     {
         public static int Answer(int[] numOfShares, int totalValueOfShares)
         {
-            
+            /*
             int n = numOfShares.Length;
 
             bool changed = false;
@@ -31,7 +31,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             if (changed)
             {
                 return minAlloc;
-            }
+            }*/
             return 0;
         }
     }
