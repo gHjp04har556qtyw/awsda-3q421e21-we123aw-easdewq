@@ -7,7 +7,16 @@ namespace C_Sharp_Challenge_Skeleton.Answers
     {
         public static int Answer(int numOfNodes, Edge[] edgeLists)
         {
-            //TODO: Please work out the solution;
+            return maxExchangesTraded(numOfNodes, edgeLists) - nonTradedWithRelation(numOfNodes, edgeLists);
+        }
+
+        private static int nonTradedWithRelation(int numOfNodes, Edge[] edgeLists)
+        {
+            return 0;
+        }
+
+        private static int maxExchangesTraded(int numOfNodes, Edge[] edgeLists)
+        {
             return 0;
         }
     }
