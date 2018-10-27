@@ -25,6 +25,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
                     if (pc.Equals("X"))
                     {
                         count = 0;
+                        sum = 0;
                     }
                     else
                     {
