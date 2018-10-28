@@ -24,10 +24,12 @@ namespace C_Sharp_Challenge_Skeleton.Answers
                 for (int j = 0; j < pcSize; j++)
                 {
                     var pc = machineToBeFixed[i, j];
-                    if (pc.Equals("X"))
-                    {
-                        count = 0;
-                        sum = 0;
+                    if (pc.Length == 1) {
+                        if (pc.Equals("X"))
+                        {
+                            count = 0;
+                            sum = 0;
+                        }
                     }
                     else
                     {
