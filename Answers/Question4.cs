@@ -10,6 +10,10 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             bool canFix = false;
             int systemSize = machineToBeFixed.GetLength(0);
             int pcSize = machineToBeFixed.GetLength(1);
+
+            // don't count if we can't
+            if (pcSize < numOfConsecutiveMachines) return 0;
+
             int diff = Math.Abs(pcSize - numOfConsecutiveMachines);
 
             int count = 0;
