@@ -10,69 +10,52 @@ namespace C_Sharp_Challenge_Skeleton.Answers
 
         public static int Answer(string[,] machineToBeFixed, int numOfConsecutiveMachines)
         {
+            List<Int32> list = new List<Int32>();
+
             int min = Int32.MaxValue;
-            int systemSize = machineToBeFixed.GetLength(0);
-            int pcSize = machineToBeFixed.GetLength(1);
-            int[] window = new int[numOfConsecutiveMachines];
-
             bool canFix = false;
-
-            int arrayPos = 0;
-
-            // don't count if we can't
-            if (pcSize < numOfConsecutiveMachines)
-            {
-                return 0;
-            }
-
             int sum;
-            for (int i = 0; i < systemSize; i++)
+            int count;
+            int val;
+            for (int i = 0; i < machineToBeFixed.GetLength(0); i++)
             {
-                arrayPos = 0;
+                list.Clear();
                 sum = 0;
-                for (int j = 0; j < pcSize; j++)
+                count = 0;
+                for (int j = 0; j < machineToBeFixed.GetLength(1); j++)
                 {
                     string pc = machineToBeFixed[i, j];
 
                     if (pc.Length == 1 && pc.Equals("X"))
                     {
-                        if (arrayPos != 0)
+                        // so we don't clear twice incase the list starts with X
+                        if (count != 0)
                         {
-                            arrayPos = 0;
+                            list.Clear();
+                            count = 0;
                             sum = 0;
                         }
                     }
                     else
                     {
-                        int val = Convert.ToInt32(pc);
-                        window[arrayPos] = val;
+                        val = Convert.ToInt32(pc);
                         sum += val;
-                        if (arrayPos == numOfConsecutiveMachines - 1)
+                        count++;
+                        list.Add(val);
+                        if (count == numOfConsecutiveMachines)
                         {
                             canFix = true;
                             if (sum < min)
                             {
                                 min = sum;
                             }
-                            sum -= window[0];
-                            // left shift
-                            for (int p = 0; p < window.Length - 1; p++)
-                            {
-                                window[p] = window[p + 1];
-                            }
-                            arrayPos--;
+                            sum -= list[0];
+                            list.RemoveAt(0);
                         }
-                        arrayPos++;
                     }
                 }
             }
-
-
-            if (!canFix)
-            {
-                return 0;
-            }
-            return min;
+            return canFix ? min : 0;
         }
 
         /*
