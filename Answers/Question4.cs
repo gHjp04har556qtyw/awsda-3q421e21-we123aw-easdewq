@@ -14,7 +14,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             int pcSize = machineToBeFixed.GetLength(1);
 
             // remove impossibilities
-            if (pcSize < numOfConsecutiveMachines) return 0;
+            if (pcSize < numOfConsecutiveMachines || systemSize <= 0 || systemSize > 100 || pcSize <= 0 || pcSize > 100 || systemSize == 0 || pcSize == 0) return 0;
 
             byte arrayPos = 0;
             bool canFix = false;

@@ -14,6 +14,9 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             int r = 0;
             int n = portfolios.Length;
 
+            // impossibilities
+            if (n < 2 || n > 100) return 0;
+
             for (int i = 0; i < n; i++)
             {
                 int subA = portfolios[i];
