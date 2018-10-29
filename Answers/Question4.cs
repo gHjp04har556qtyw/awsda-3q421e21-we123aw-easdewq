@@ -22,25 +22,28 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             int[] window = new int[numOfConsecutiveMachines];
             string pc;
 
-			for (int i = 0; i < systemSize; i++)
+            for (int i = 0; i < systemSize; i++)
             {
-				arrayPos = 0;
-				sum = 0;
-                for (int j = 0; j < pcSize - numOfConsecutiveMachines + 1; j++)
+                arrayPos = 0;
+                sum = 0;
+                for (int j = 0; j < pcSize; j++)
                 {
                     pc = machineToBeFixed[i, j];
-					
-                    if (pc.Length == 1 && pc.Equals("X")) {
-						if(arrayPos != 0){
-							arrayPos = 0;
-							sum = 0;
-						}
+
+                    if (pc.Length == 1 && pc.Equals("X"))
+                    {
+                        if (arrayPos != 0)
+                        {
+                            arrayPos = 0;
+                            sum = 0;
+                        }
                     }
                     else
                     {
 
+
                         // check that we can fit
-                        if(arrayPos == 0)
+                        if (arrayPos == 0)
                         {
                             var endDestination = machineToBeFixed[i, j + numOfConsecutiveMachines];
                             var midPoint = machineToBeFixed[i, j + (numOfConsecutiveMachines / 2)];
@@ -52,30 +55,31 @@ namespace C_Sharp_Challenge_Skeleton.Answers
 
 
                         // otherwise try normal calculations
-						val = Convert.ToInt32(pc);
-						window[arrayPos] = val;
-						sum += val;
+                        val = Convert.ToInt32(pc);
+                        window[arrayPos] = val;
+                        sum += val;
                         if (arrayPos == numOfConsecutiveMachines - 1)
                         {
                             canFix = true;
                             if (sum < min)
                             {
                                 min = sum;
-								
-								if(sum == numOfConsecutiveMachines) return numOfConsecutiveMachines;
+
+                                if (sum == numOfConsecutiveMachines) return numOfConsecutiveMachines;
                             }
-							sum -= window[0];
-							for(int p=0; p<window.Length-1; p++){
-								window[p] = window[p+1];
-							}
-							arrayPos--;
+                            sum -= window[0];
+                            for (int p = 0; p < window.Length - 1; p++)
+                            {
+                                window[p] = window[p + 1];
+                            }
+                            arrayPos--;
                         }
-						arrayPos++;
+                        arrayPos++;
                     }
                 }
             }
 
-			return canFix ? min : 0;
+            return canFix ? min : 0;
         }
 
         /*

@@ -20,6 +20,8 @@ namespace C_Sharp_Challenge_Skeleton.Answers
         public static int Answer(int[] cashflowIn, int[] cashflowOut)
         {
 
+            int sumA = SumArray(cashflowIn, cashflowIn.Length);
+            int sumB = SumArray(cashflowOut, cashflowOut.Length);
 
 
             // Dynamically add smallest positive number that also has a small negative number
