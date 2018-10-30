@@ -10,25 +10,29 @@ namespace C_Sharp_Challenge_Skeleton.Answers
 
         public static int Answer(string[,] machineToBeFixed, int numOfConsecutiveMachines)
         {
+            int min = Int32.MaxValue;
             int systemSize = machineToBeFixed.GetLength(0);
             int pcSize = machineToBeFixed.GetLength(1);
+            int[] window = new int[numOfConsecutiveMachines];
 
-            // remove impossibilities
-            if (pcSize < numOfConsecutiveMachines || systemSize <= 0 || systemSize > 100 || pcSize <= 0 || pcSize > 100 || systemSize == 0 || pcSize == 0) return 0;
+            bool canFix = false;
 
             int arrayPos = 0;
-            bool canFix = false;
-            int min = Int32.MaxValue, sum = 0, val = 0;
-            int[] window = new int[numOfConsecutiveMachines];
-            string pc;
 
+            // don't count if we can't
+            if (pcSize < numOfConsecutiveMachines)
+            {
+                return 0;
+            }
+
+            int sum;
             for (int i = 0; i < systemSize; i++)
             {
                 arrayPos = 0;
                 sum = 0;
                 for (int j = 0; j < pcSize; j++)
                 {
-                    pc = machineToBeFixed[i, j];
+                    string pc = machineToBeFixed[i, j];
 
                     if (pc.Length == 1 && pc.Equals("X"))
                     {
@@ -40,20 +44,7 @@ namespace C_Sharp_Challenge_Skeleton.Answers
                     }
                     else
                     {
-
-                        // check that we can fit
-                        if (arrayPos == 0 && j < (pcSize - (numOfConsecutiveMachines + 1)))
-                        {
-                            var endDestination = machineToBeFixed[i, j + numOfConsecutiveMachines];
-                            var midPoint = machineToBeFixed[i, j + (numOfConsecutiveMachines / 2)];
-
-                            if (endDestination.Length == 1 && endDestination.Equals("X")) break;
-                            if (midPoint.Length == 1 && midPoint.Equals("X")) break;
-                        }
-
-
-                        // otherwise try normal calculations
-                        val = Convert.ToInt32(pc);
+                        int val = Convert.ToInt32(pc);
                         window[arrayPos] = val;
                         sum += val;
                         if (arrayPos == numOfConsecutiveMachines - 1)
@@ -62,10 +53,9 @@ namespace C_Sharp_Challenge_Skeleton.Answers
                             if (sum < min)
                             {
                                 min = sum;
-
-                                if (sum == numOfConsecutiveMachines) return numOfConsecutiveMachines;
                             }
                             sum -= window[0];
+                            // left shift
                             for (int p = 0; p < window.Length - 1; p++)
                             {
                                 window[p] = window[p + 1];
@@ -77,8 +67,89 @@ namespace C_Sharp_Challenge_Skeleton.Answers
                 }
             }
 
-            return canFix ? min : 0;
+
+            if (!canFix)
+            {
+                return 0;
+            }
+            return min;
         }
+
+
+
+        /*
+        int systemSize = machineToBeFixed.GetLength(0);
+        int pcSize = machineToBeFixed.GetLength(1);
+
+        // remove impossibilities
+        if (pcSize < numOfConsecutiveMachines || systemSize <= 0 || systemSize > 100 || pcSize <= 0 || pcSize > 100 || systemSize == 0 || pcSize == 0) return 0;
+
+        int arrayPos = 0;
+        bool canFix = false;
+        int min = Int32.MaxValue, sum = 0, val = 0;
+        int[] window = new int[numOfConsecutiveMachines];
+        string pc;
+
+        for (int i = 0; i < systemSize; i++)
+        {
+            arrayPos = 0;
+            sum = 0;
+            for (int j = 0; j < pcSize; j++)
+            {
+                pc = machineToBeFixed[i, j];
+
+                if (pc.Length == 1 && pc.Equals("X"))
+                {
+                    if (arrayPos != 0)
+                    {
+                        arrayPos = 0;
+                        sum = 0;
+                    }
+                }
+                else
+                {
+
+                    // check that we can fit
+                    if (arrayPos == 0 && j < (pcSize - (numOfConsecutiveMachines + 1)))
+                    {
+                        var endDestination = machineToBeFixed[i, j + numOfConsecutiveMachines];
+                        var midPoint = machineToBeFixed[i, j + (numOfConsecutiveMachines / 2)];
+
+                        if (endDestination.Length == 1 && endDestination.Equals("X")) break;
+                        if (midPoint.Length == 1 && midPoint.Equals("X")) break;
+                    }
+
+
+                    // otherwise try normal calculations
+                    val = Convert.ToInt32(pc);
+                    window[arrayPos] = val;
+                    sum += val;
+                    if (arrayPos == numOfConsecutiveMachines - 1)
+                    {
+                        canFix = true;
+                        if (sum < min)
+                        {
+                            min = sum;
+
+                            if (sum == numOfConsecutiveMachines) return numOfConsecutiveMachines;
+                        }
+                        sum -= window[0];
+                        for (int p = 0; p < window.Length - 1; p++)
+                        {
+                            window[p] = window[p + 1];
+                        }
+                        arrayPos--;
+                    }
+                    arrayPos++;
+                }
+            }
+        }
+
+        return canFix ? min : 0;
+        */
+
+
+
 
         /*
          * int min = Int32.MaxValue;
