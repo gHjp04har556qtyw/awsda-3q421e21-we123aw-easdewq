@@ -16,9 +16,9 @@ namespace C_Sharp_Challenge_Skeleton.Answers
             // remove impossibilities
             if (pcSize < numOfConsecutiveMachines || systemSize <= 0 || systemSize > 100 || pcSize <= 0 || pcSize > 100 || systemSize == 0 || pcSize == 0) return 0;
 
-            byte arrayPos = 0;
+            int arrayPos = 0;
             bool canFix = false;
-            int min = Int32.MaxValue, sum, val;
+            int min = Int32.MaxValue, sum = 0, val = 0;
             int[] window = new int[numOfConsecutiveMachines];
             string pc;
 
@@ -41,14 +41,12 @@ namespace C_Sharp_Challenge_Skeleton.Answers
                     else
                     {
 
-
                         // check that we can fit
-                        if (arrayPos == 0)
+                        if (arrayPos == 0 && j < (pcSize - (numOfConsecutiveMachines + 1)))
                         {
                             var endDestination = machineToBeFixed[i, j + numOfConsecutiveMachines];
                             var midPoint = machineToBeFixed[i, j + (numOfConsecutiveMachines / 2)];
 
-                            // go to next iteration of loop
                             if (endDestination.Length == 1 && endDestination.Equals("X")) break;
                             if (midPoint.Length == 1 && midPoint.Equals("X")) break;
                         }
