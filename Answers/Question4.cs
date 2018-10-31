@@ -10,9 +10,18 @@ namespace C_Sharp_Challenge_Skeleton.Answers
 
         public static int Answer(string[,] machineToBeFixed, int numOfConsecutiveMachines)
         {
+
+            if (numOfConsecutiveMachines < 0 || numOfConsecutiveMachines > 100) return 0;
+
             int min = Int32.MaxValue;
             int systemSize = machineToBeFixed.GetLength(0);
+
+            if (systemSize < 0 || systemSize > 100) return 0;
+
             int pcSize = machineToBeFixed.GetLength(1);
+
+            if (pcSize < 0 || pcSize > 100) return 0;
+
             int[] window = new int[numOfConsecutiveMachines];
 
             bool canFix = false;
