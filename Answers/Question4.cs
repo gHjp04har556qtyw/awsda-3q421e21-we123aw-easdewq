@@ -11,57 +11,77 @@ namespace C_Sharp_Challenge_Skeleton.Answers
         public static int Answer(string[,] machineToBeFixed, int numOfConsecutiveMachines)
         {
 
-            int systemSize = machineToBeFixed.GetLength(0);
-            int pcSize = machineToBeFixed.GetLength(1);
-
-            if (systemSize < 0 || systemSize > 100) return 0;
-            if (pcSize < 0 || pcSize > 100) return 0;
-
-
-            numOfConsecutiveMachines -= 1;
-
-            if (pcSize < numOfConsecutiveMachines) return 0;
+            if (numOfConsecutiveMachines < 0 || numOfConsecutiveMachines > 100) return 0;
 
             int min = Int32.MaxValue;
-            int startPos = 0;
-            int endPos = 0;
-            int currentSum = 0;
+            int systemSize = machineToBeFixed.GetLength(0);
 
+            if (systemSize < 0 || systemSize > 100) return 0;
+
+            int pcSize = machineToBeFixed.GetLength(1);
+
+            if (pcSize < 0 || pcSize > 100) return 0;
+
+            int[] window = new int[numOfConsecutiveMachines];
+
+            bool canFix = false;
+
+            int arrayPos = 0;
+
+            // don't count if we can't
+            if (pcSize < numOfConsecutiveMachines)
+            {
+                return 0;
+            }
+
+            int sum;
             for (int i = 0; i < systemSize; i++)
             {
-                startPos = 0;
-                endPos = 0;
-                currentSum = 0;
-
-                for (int j = 0; j < pcSize - numOfConsecutiveMachines; j++)
+                arrayPos = 0;
+                sum = 0;
+                for (int j = 0; j < pcSize; j++)
                 {
                     string pc = machineToBeFixed[i, j];
 
                     if (pc.Length == 1 && pc.Equals("X"))
                     {
-                        currentSum = 0;
-                        startPos = i + 1;
-                        endPos = i + 1;
+                        if (arrayPos != 0)
+                        {
+                            arrayPos = 0;
+                            sum = 0;
+                        }
                     }
                     else
                     {
-                        currentSum += Convert.ToInt32(machineToBeFixed[i, endPos]);
-
-                        if ((endPos - startPos) == numOfConsecutiveMachines)
+                        int val = Convert.ToInt32(pc);
+                        window[arrayPos] = val;
+                        sum += val;
+                        if (arrayPos == numOfConsecutiveMachines - 1)
                         {
-                            if (currentSum < min)
+                            canFix = true;
+                            if (sum < min)
                             {
-                                min = currentSum;
-                                currentSum -= Convert.ToInt32(machineToBeFixed[i, startPos]);
-                                startPos++;
+                                min = sum;
                             }
+                            sum -= window[0];
+                            // left shift
+                            for (int p = 0; p < window.Length - 1; p++)
+                            {
+                                window[p] = window[p + 1];
+                            }
+                            arrayPos--;
                         }
-                        endPos++;
+                        arrayPos++;
                     }
                 }
             }
 
-            return min == Int32.MaxValue ? 0 : min;
+
+            if (!canFix)
+            {
+                return 0;
+            }
+            return min;
         }
 
 
